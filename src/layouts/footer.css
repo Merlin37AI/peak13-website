@@ -1,0 +1,7 @@
+/* footer */
+footer{padding:28px var(--gut) 34px}
+footer .plus{margin-bottom:22px}
+.foot{display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:start}
+.foot .legal{color:var(--muted);font-size:14px;max-width:70ch}
+.foot a{color:var(--ink)}
+

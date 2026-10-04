@@ -1,0 +1,29 @@
+/* stage */
+.stage{position:relative}
+.stage__sticky{position:sticky;top:0;height:100vh;padding:14px var(--gut) 0;display:flex;flex-direction:column;z-index:1}
+.scene{position:relative;flex:1;border-radius:var(--r);overflow:hidden;background:radial-gradient(120% 90% at 62% 46%, var(--scene-2) 0%, var(--scene) 62%, #080c0b 100%);color:var(--hud)}
+#block{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hud{position:absolute;inset:0;pointer-events:none}
+.hud > *{position:absolute;font-family:var(--mono);font-size:11px;letter-spacing:.03em;text-transform:uppercase;color:var(--hud)}
+.hud .tl{left:20px;top:18px;display:flex;align-items:center;gap:9px;max-width:60%}
+.hud .tl::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--sig);box-shadow:0 0 12px var(--sig);flex:none}
+.hud .tr{right:20px;top:18px;text-align:right}
+.hud .bl{left:20px;bottom:18px}
+.hud .br{right:20px;bottom:16px;display:flex;gap:6px}
+.hud .br b{font-weight:400;width:22px;height:22px;border:1px solid rgba(226,238,232,.22);border-radius:50%;display:grid;place-items:center;font-size:10px;transition:background .4s,color .4s,border-color .4s}
+.hud .br b.on{background:var(--sig);border-color:var(--sig);color:#062016}
+.hud .br b.done{border-color:rgba(31,209,138,.55);color:var(--sig)}
+.stage__sticky .plus{height:46px;flex:none}
+.chapters{list-style:none;margin:-100vh 0 0;padding:0;position:relative;z-index:2}
+.chapter{height:100vh;display:flex;align-items:center;padding:0 calc(var(--gut) + 40px)}
+.chapter:last-child{height:150vh;align-items:flex-start;padding-top:calc(50vh - 150px)}
+.card{width:min(410px,100%);background:var(--card);border-radius:18px;padding:22px 24px 24px;box-shadow:0 30px 60px -30px rgba(0,0,0,.55)}
+.card .chip{display:inline-flex;align-items:center;gap:8px;color:var(--muted);margin-bottom:22px}
+.card .chip::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--sig-ink)}
+.card .num{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--line);padding-top:12px;margin-bottom:12px}
+.card h3{font-size:44px;letter-spacing:-.035em}
+.card .num .mono{color:var(--muted)}
+.card p.body{font-size:16.5px;line-height:1.5;color:#26302b}
+.card .formula{font-family:var(--mono);font-size:13px;margin-top:14px;padding:10px 12px;border-radius:10px;background:#e7ebe5;text-transform:uppercase;letter-spacing:.02em}
+.card .go{display:inline-block;margin-top:14px;font-family:var(--mono);font-size:12px;text-transform:uppercase;color:var(--sig-ink)}
+

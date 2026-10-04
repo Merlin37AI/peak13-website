@@ -1,0 +1,9 @@
+/* css 3d block */
+.cube-stage{position:relative;perspective:1100px;display:grid;place-items:center;min-height:320px}
+.cube{position:relative;width:150px;height:150px;transform-style:preserve-3d;transform:rotateX(-18deg) rotateY(-34deg);animation:turn 26s linear infinite}
+.cube i{position:absolute;inset:0;outline:1px solid rgba(214,236,226,.3);background:rgba(31,209,138,.05)}
+.cube i:last-child{outline-color:rgba(31,209,138,.7);background:rgba(31,209,138,.12)}
+.cube b{position:absolute;left:50%;top:50%;width:1px;height:176px;margin:-88px 0 0 -.5px;background:rgba(214,236,226,.28)}
+@keyframes turn{to{transform:rotateX(-18deg) rotateY(326deg)}}
+.cube-label{position:absolute;bottom:22px;left:0;right:0;text-align:center;color:var(--hud)}
+

@@ -1,0 +1,13 @@
+/* calculator */
+.calc{margin-top:48px;border-radius:var(--r);background:var(--card);padding:28px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) minmax(0,1.3fr);gap:16px;align-items:end;border:1px solid var(--line)}
+.calc label{display:block}
+.calc label .mono{display:block;color:var(--muted);margin-bottom:10px}
+.calc input{width:100%;height:64px;border:1px solid var(--line);border-radius:14px;background:var(--page);font:300 34px/1 var(--sans);letter-spacing:-.03em;color:var(--ink);padding:0 16px}
+.calc input::placeholder{color:#8b938e;font-size:18px;letter-spacing:0}
+.calc .fixed{height:64px;border-radius:14px;border:1px dashed var(--line);display:flex;align-items:center;padding:0 16px;font:300 34px/1 var(--sans);letter-spacing:-.03em}
+.calc .out{height:64px;border-radius:14px;background:var(--scene);color:#eef3ef;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 18px}
+.calc .out output{font:300 34px/1 var(--sans);letter-spacing:-.03em;color:var(--sig)}
+.calc .out output.empty{font:400 12px/1.3 var(--mono);letter-spacing:.03em;text-transform:uppercase;color:rgba(238,243,239,.6)}
+.calc .op{position:relative}
+.calc .note{grid-column:1 / -1;color:var(--muted);font-size:15px}
+

@@ -1,0 +1,11 @@
+/* cta */
+.cta-wrap{padding:120px var(--gut) 0}
+.cta{position:relative;border-radius:var(--r);overflow:hidden;background:radial-gradient(90% 120% at 78% 50%, var(--scene-2), var(--scene) 60%);color:#eef3ef;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);min-height:560px}
+.cta .copy{padding:56px 48px;display:flex;flex-direction:column;justify-content:space-between;gap:40px;position:relative;z-index:1}
+.cta .big{color:#f1f5f2}
+.cta p{color:rgba(238,243,239,.8);max-width:40ch;font-size:18px}
+.cta a.mail{color:var(--sig)}
+.cta .chipline{color:var(--hud)}
+.cta p.mono{font-size:11.5px;max-width:none}
+.cta .pill{align-self:flex-start}
+

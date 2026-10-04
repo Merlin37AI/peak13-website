@@ -1,0 +1,8 @@
+/* masked reveal */
+.mask{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}
+.mask > span{display:block}
+.js .reveal .mask > span{transform:translateY(108%);transition:transform 1.1s var(--ease)}
+.js .reveal.in .mask > span{transform:none}
+.js .reveal .mask:nth-child(2) > span{transition-delay:.08s}
+.js .reveal .mask:nth-child(3) > span{transition-delay:.16s}
+

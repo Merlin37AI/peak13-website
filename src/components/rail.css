@@ -1,0 +1,5 @@
+/* scroll indicator */
+.rail{position:fixed;right:8px;top:calc(50% - 70px);width:3px;height:140px;border-radius:3px;background:rgba(17,21,19,.12);z-index:20}
+.rail b{position:absolute;left:0;right:0;top:0;height:34px;border-radius:3px;background:var(--ink)}
+
+

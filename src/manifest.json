@@ -1,0 +1,34 @@
+{
+  "css": [
+    "layouts/base.css",
+    "components/reveal.css",
+    "components/stage.css",
+    "components/scene-panels.css",
+    "components/grow.css",
+    "layouts/sections.css",
+    "components/calculator.css",
+    "components/offers.css",
+    "components/rise.css",
+    "components/build.css",
+    "components/cta.css",
+    "components/tower.css",
+    "layouts/footer.css",
+    "layouts/logo.css",
+    "components/rail.css",
+    "layouts/responsive.css"
+  ],
+  "js": [
+    "components/core.js",
+    "components/method-timeline.js",
+    "components/projector.js",
+    "components/method-scene.js",
+    "components/method-hud.js",
+    "components/scroll-mapping.js",
+    "components/grow-scene.js",
+    "components/reveals.js",
+    "components/build-flow.js",
+    "components/calculator.js",
+    "components/tower.js",
+    "components/boot.js"
+  ]
+}

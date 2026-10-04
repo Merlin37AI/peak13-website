@@ -1,0 +1,25 @@
+# build output
+dist/
+
+# secrets and keys never go in the repo
+.env
+.env.*
+*.key
+
+# editor and OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# timestamped backups and scratch
+*.backup-*
+*.BACKUP-*
+scratch/
+
+# local Claude settings
+.claude/
+
+# internal notes, repo is public
+CLAUDE.md
+docs/

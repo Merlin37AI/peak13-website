@@ -1,0 +1,13 @@
+  <section class="section" id="calc" aria-labelledby="calc-h">
+    <div class="split">
+      <h2 id="calc-h" class="big reveal"><span class="mask"><span>Run it on</span></span><span class="mask"><span>your own week.</span></span></h2>
+      <p class="lede">This is the sum we use in the Cost step, run on your own figures.</p>
+    </div>
+    <form class="calc" onsubmit="return false" aria-describedby="calc-note">
+      <label><span class="mono">Hours a week you could get back</span><input id="inHours" type="number" inputmode="decimal" min="0" step="0.5" placeholder="hours"></label>
+      <label><span class="mono">&times; Hourly rate</span><input id="inRate" type="number" inputmode="decimal" min="0" step="1" placeholder="&pound; per hour"></label>
+      <div><span class="mono" style="display:block;color:var(--muted);margin-bottom:10px">&times; Weeks</span><div class="fixed" aria-hidden="true">52</div></div>
+      <div><span class="mono" style="display:block;color:var(--muted);margin-bottom:10px">= Annual value</span><div class="out"><output id="outVal" class="empty" for="inHours inRate" aria-live="polite">Add both figures</output></div></div>
+      <p class="note" id="calc-note">A rough guide, worked out in your browser. The audit puts a proper number on it.</p>
+    </form>
+  </section>

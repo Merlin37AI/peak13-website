@@ -1,0 +1,6 @@
+/* page sections */
+.section{padding:120px var(--gut) 40px}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px}
+.big{font-size:clamp(42px,6.2vw,96px);letter-spacing:-.045em;line-height:.94}
+.lede{font-size:clamp(18px,1.6vw,22px);line-height:1.38;letter-spacing:-.01em;max-width:36ch}
+

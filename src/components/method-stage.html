@@ -1,0 +1,91 @@
+  <section class="stage" id="stage" aria-labelledby="method-h">
+    <h2 class="sr" id="method-h">How we find it: the STOIC method, shown on a building with one floor for each department</h2>
+    <div class="stage__sticky">
+      <div class="scene" id="scene">
+        <canvas id="block" role="img" aria-label="A seven-floor glass building, one floor for each department of a property business. As you scroll, a job is tracked through every floor, waste is flagged in red, the top three opportunities are kept, and the time and money lost and recovered are counted."></canvas>
+        <div class="hud" aria-hidden="true">
+          <div class="tl" id="hudClip">Step 1: The whole building</div>
+          <div class="tr" id="hudOrbit">Orbit 000&deg; &bull; Floors 07</div>
+          <div class="bl" id="hudStep">STOIC &bull; 01/05 &bull; Survey</div>
+          <div class="br" id="hudIdx"><b class="on">S</b><b>T</b><b>O</b><b>I</b><b>C</b></div>
+        </div>
+        <div class="panel" id="mx" role="group" aria-label="Example opportunity matrix and the top three suggestions">
+          <p class="ph mono">Opportunity matrix &bull; example</p>
+          <div class="mgrid">
+            <span class="q q1 mono">Quick wins</span><span class="q q2 mono">Big bets</span><span class="q q3 mono">Fill-ins</span><span class="q q4 mono">Leave alone</span>
+            <span class="ax ay mono">Impact &uarr;</span><span class="ax axx mono">Effort &rarr;</span>
+            <i class="b g" style="left:22%;top:16%" data-l="Repairs">1</i>
+            <i class="b g" style="left:34%;top:30%" data-l="Rent">2</i>
+            <i class="b g" style="left:16%;top:44%" data-l="Enquiries">3</i>
+            <i class="b n" style="left:63%;top:66%" data-l="Viewings">4</i>
+            <i class="b n l" style="left:73%;top:38%" data-l="Reports">5</i>
+          </div>
+          <ol class="top3">
+            <li><b>1</b><span>Maintenance triage and dispatch</span><em class="mono">Quick win</em></li>
+            <li><b>2</b><span>Rent arrears chasing</span><em class="mono">Quick win</em></li>
+            <li><b>3</b><span>Enquiry capture and first reply</span><em class="mono">Quick win</em></li>
+          </ol>
+        </div>
+        <div class="panel" id="cs" role="group" aria-label="Example of loss identified and loss recovered, in time and money">
+          <p class="ph mono">Loss and recovery &bull; example</p>
+          <div class="csg">
+            <div class="pound" aria-hidden="true">&pound;</div>
+            <div class="mets">
+              <div class="met">
+                <p class="mono mh">Time lost</p>
+                <div class="bar"><i class="idf ti"></i><i class="rcv tr2"></i></div>
+                <p class="mn"><span class="bad"><b class="mono">Identified</b><em data-k="ti">0 hrs a week</em></span><span class="good"><b class="mono">Recovered</b><em data-k="tr">0 hrs a week</em></span></p>
+              </div>
+              <div class="met">
+                <p class="mono mh">Money lost</p>
+                <div class="bar"><i class="idf mi"></i><i class="rcv mr"></i></div>
+                <p class="mn"><span class="bad"><b class="mono">Identified</b><em data-k="mi">&pound;0 a year</em></span><span class="good"><b class="mono">Recovered</b><em data-k="mr">&pound;0 a year</em></span></p>
+              </div>
+            </div>
+          </div>
+          <p class="mono foot">Hours &times; &pound;25 an hour &times; 52 weeks. An illustration, not a client result.</p>
+        </div>
+      </div>
+      <div class="plus" aria-hidden="true"><span>+</span><span>+</span><span class="mono">Scroll to walk the building</span><span>+</span><span>+</span></div>
+    </div>
+
+    <ol class="chapters">
+      <li class="chapter" data-step="0">
+        <article class="card">
+          <p class="chip mono">Step 1: The whole building</p>
+          <div class="num"><h3>Survey</h3><span class="mono">01 / 05</span></div>
+          <p class="body">From the street it looks like one solid building. Go floor by floor and you see how it really runs. We look at the operation as it actually works, and hold leadership's view up against what happens on the ground.</p>
+        </article>
+      </li>
+      <li class="chapter" data-step="1">
+        <article class="card">
+          <p class="chip mono">Step 2: The track</p>
+          <div class="num"><h3>Trace</h3><span class="mono">02 / 05</span></div>
+          <p class="body">We follow one job through every department to see where the time and money actually go. Green means the work flows. Red marks the waste, where it happens.</p>
+        </article>
+      </li>
+      <li class="chapter" data-step="2">
+        <article class="card">
+          <p class="chip mono">Step 3: The vital few</p>
+          <div class="num"><h3>Order</h3><span class="mono">03 / 05</span></div>
+          <p class="body">Most of what we find isn't worth chasing yet. We rank it by impact against effort and keep the vital few. What we leave alone gets named, and stays on the drawing as an outline.</p>
+        </article>
+      </li>
+      <li class="chapter" data-step="3">
+        <article class="card">
+          <p class="chip mono">Step 4: The matrix</p>
+          <div class="num"><h3>Interrogate</h3><span class="mono">04 / 05</span></div>
+          <p class="body">Then we pressure-test the opportunities on an impact and effort matrix. A fix that looks simple on a whiteboard usually hides a dependency nobody mentioned, so we go looking for it before anything gets bought. You get the top three, in order.</p>
+        </article>
+      </li>
+      <li class="chapter" data-step="4">
+        <article class="card">
+          <p class="chip mono">Step 5: Loss and recovery</p>
+          <div class="num"><h3>Cost</h3><span class="mono">05 / 05</span></div>
+          <p class="body">Last, we put a number on it, in the two measures that matter: time and money. What we find is the loss. What we build is the recovery. Whatever one week gives back, the year gives back 52 times.</p>
+          <p class="formula">Hours reclaimed &times; rate &times; 52 = annual value</p>
+          <a class="go" href="#calc">Run it on your own week &darr;</a>
+        </article>
+      </li>
+    </ol>
+  </section>

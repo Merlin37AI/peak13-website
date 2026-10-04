@@ -1,0 +1,4 @@
+/* scroll rise (staggered fade-up) */
+.js .rise{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:calc(var(--i,0) * 110ms)}
+.js .rise.in{opacity:1;transform:none}
+
