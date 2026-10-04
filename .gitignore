@@ -23,3 +23,7 @@ scratch/
 # internal notes, repo is public
 CLAUDE.md
 docs/
+
+.vercel/
+
+.vercel
