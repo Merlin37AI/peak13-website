@@ -1,5 +1,6 @@
 {
   "css": [
+    "layouts/fonts.css",
     "layouts/base.css",
     "components/reveal.css",
     "components/stage.css",
@@ -13,6 +14,7 @@
     "components/cta.css",
     "components/tower.css",
     "layouts/footer.css",
+    "layouts/legal.css",
     "layouts/logo.css",
     "components/rail.css",
     "layouts/responsive.css"

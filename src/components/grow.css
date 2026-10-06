@@ -38,7 +38,7 @@
 .dots i.on,.dots i.emp{background:var(--sig)}
 .dots i.bad{background:#ff6a5f}
 .dots i.solo{background:rgba(236,244,240,.72)}
-.dots i.top{transform:scale(1.5);box-shadow:0 0 0 2px rgba(31,209,138,.35)}
+.dots i.pin{transform:scale(1.5);box-shadow:0 0 0 2px rgba(31,209,138,.35)}
 .od .cap{font-size:13.5px;line-height:1.4;color:rgba(238,243,239,.8)}
 .od .cap .s{display:none}
 .odds .src{margin-top:18px;padding-top:12px;border-top:1px solid rgba(226,238,232,.14);font-size:8.5px;line-height:1.5;color:rgba(226,238,232,.55)}

@@ -2,8 +2,10 @@
 .mark{display:block;line-height:0;font-size:0}
 .mark img{display:block;height:116px;width:auto;max-width:none}
 footer .mark img{height:92px}
-@media (max-width:760px){
+@media (max-width:1000px){
   .top{flex-wrap:wrap}
+}
+@media (max-width:760px){
   .mark img{height:80px}
   footer .mark img{height:72px}
 }

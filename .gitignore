@@ -27,3 +27,9 @@ docs/
 .vercel/
 
 .vercel
+
+# raw AI generations, review only
+generations/
+
+# review reports, internal
+reviews/

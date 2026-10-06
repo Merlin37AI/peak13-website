@@ -1,10 +1,14 @@
 # Pages
 
-The site is one page. Routing is anchors, not URLs.
+The site is one page, plus two plain legal pages. Routing on the home page is anchors, not URLs.
 
 | Page | File | Output | Layout |
 |---|---|---|---|
 | Home | `index.html` | `dist/index.html` | `layouts/base.html` |
+| Privacy notice | `privacy.html` | `dist/privacy.html` | `layouts/legal.html` |
+| Website terms | `terms.html` | `dist/terms.html` | `layouts/legal.html` |
+
+The legal pages hold body text only. Their title and description are set in the `legalPages` list in `build.mjs`. They load the same `site.css` but not `site.js`. The footer (company details, email, Privacy and Terms links) is one shared file, `layouts/footer.html`, included by both layouts. Link to them as `/privacy.html` and `/terms.html`. Review the text when what the site collects changes (analytics, a form, an embedded booking widget, self-hosted fonts).
 
 `index.html` contains only `<!--include:...-->` lines, one per section, in page order. `build.mjs` replaces each with the component's html and drops the result into the layout's `<!--PAGE-->` slot.
 

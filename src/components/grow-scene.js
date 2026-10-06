@@ -197,7 +197,7 @@
     var c0 = Math.round(36 * p0), a1 = Math.round(100 * Math.min(1, p1 * 2)), r1 = Math.round(62 * clamp((p1 - 0.5) * 2, 0, 1)), c2 = Math.round(100 * p2);
     setDots(dotSets[0], function (i) { return i < c0 ? "on" : ""; });
     setDots(dotSets[1], function (i) { return i >= a1 ? "" : (i >= 38 && (i - 38) < r1 ? "bad" : "on"); });
-    setDots(dotSets[2], function (i) { return i >= c2 ? "" : (i === 99 && c2 === 100 ? "emp top" : i < 75 ? "solo" : "emp"); });
+    setDots(dotSets[2], function (i) { return i >= c2 ? "" : (i === 99 && c2 === 100 ? "emp pin" : i < 75 ? "solo" : "emp"); });
   }
 
   var curG = null, tgtG = 0, dirtyG = true, inViewG = false;

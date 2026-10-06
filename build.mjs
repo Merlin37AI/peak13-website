@@ -29,10 +29,22 @@ fs.writeFileSync(path.join(dist, "assets", "site.css"), css);
 // The js fragments share one scope: they are joined inside a single wrapper, in manifest order.
 fs.writeFileSync(path.join(dist, "assets", "site.js"), '(function () {\n  "use strict";\n' + js + "})();\n");
 
-const layout = read(src("layouts/base.html"));
+const layout = resolveIncludes(read(src("layouts/base.html")));
 const page = resolveIncludes(read(src("pages/index.html")));
 if (!layout.includes("<!--PAGE-->")) throw new Error("layouts/base.html has no <!--PAGE--> slot");
 fs.writeFileSync(path.join(dist, "index.html"), layout.replace("<!--PAGE-->", page));
+
+// Legal pages: plain reading layout, no scene scripts. Output is dist/<name>.html.
+const legalLayout = resolveIncludes(read(src("layouts/legal.html")));
+const legalPages = [
+  { name: "privacy", title: "Privacy notice | Peak13", desc: "How Peak13 Potential Ltd handles personal data collected through this website and when you contact us." },
+  { name: "terms", title: "Website terms | Peak13", desc: "The terms for using the Peak13 Potential Ltd website." },
+];
+for (const p of legalPages) {
+  const body = resolveIncludes(read(src(`pages/${p.name}.html`)));
+  const html = legalLayout.replace("%TITLE%", p.title).replace("%DESC%", p.desc).replace("<!--PAGE-->", body);
+  fs.writeFileSync(path.join(dist, `${p.name}.html`), html);
+}
 
 const pub = path.join(root, "public");
 if (fs.existsSync(pub)) fs.cpSync(pub, dist, { recursive: true });
