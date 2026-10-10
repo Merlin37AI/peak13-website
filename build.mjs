@@ -42,7 +42,8 @@ const legalPages = [
 ];
 for (const p of legalPages) {
   const body = resolveIncludes(read(src(`pages/${p.name}.html`)));
-  const html = legalLayout.replace("%TITLE%", p.title).replace("%DESC%", p.desc).replace("<!--PAGE-->", body);
+  const canon = `https://www.peak13.co.uk/${p.name}.html`;
+  const html = legalLayout.replace("%TITLE%", p.title).replace("%DESC%", p.desc).replace("%CANON%", canon).replace("<!--PAGE-->", body);
   fs.writeFileSync(path.join(dist, `${p.name}.html`), html);
 }
 

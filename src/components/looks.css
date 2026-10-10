@@ -1,0 +1,7 @@
+/* what the audit looks for: plain list of waste types, no figures */
+.looks__list{list-style:none;margin:56px 0 0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
+.looks__list li{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px 22px 26px;display:flex;flex-direction:column;gap:12px}
+.looks__list b{font-size:clamp(20px,1.7vw,24px);font-weight:400;letter-spacing:-.02em;line-height:1.15}
+.looks__list span{font-size:15.5px;line-height:1.4;color:#26302b}
+@media (max-width:1100px){.looks__list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.looks__list{grid-template-columns:minmax(0,1fr)}.looks__list li{padding:20px 18px 22px}}
