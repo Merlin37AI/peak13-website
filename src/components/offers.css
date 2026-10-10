@@ -16,3 +16,6 @@
 .offer p{color:#26302b}
 .offer .pill{align-self:flex-start;margin-top:auto}
 
+
+.offer__more{color:var(--ink);text-decoration:underline;text-underline-offset:3px;font-size:15.5px;line-height:1.35}
+.lede a{text-decoration:underline;text-underline-offset:3px}

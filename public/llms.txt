@@ -2,6 +2,10 @@
 
 Peak13 finds the waste in how UK property management and lettings firms run, then builds the automations and AI agents that remove it. Audit £997.
 
-- [Home](https://www.peak13.co.uk/)
+- [Home](https://www.peak13.co.uk/): What Peak13 does, how the STOIC method works and the three offers.
+- [Services](https://www.peak13.co.uk/services.html): The three services for UK lettings agents, with prices and frequently asked questions.
+- [STOIC Operational Audit](https://www.peak13.co.uk/stoic-audit.html): A 5-day operational audit for £997, one-off.
+- [Agents & Automations](https://www.peak13.co.uk/agents-and-automations.html): Workflow automations and AI agents, from £3,000, quoted before work starts.
+- [Embedded Retainer](https://www.peak13.co.uk/embedded-retainer.html): 15 hours a month for £1,500 a month, 3-month minimum.
 - [Privacy notice](https://www.peak13.co.uk/privacy.html)
 - [Website terms](https://www.peak13.co.uk/terms.html)

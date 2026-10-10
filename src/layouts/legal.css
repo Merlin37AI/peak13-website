@@ -13,3 +13,21 @@
 @media (max-width:760px){
   .doc{padding-top:36px;padding-bottom:56px}
 }
+
+/* service pages: breadcrumb, cards, FAQ, call to action */
+.crumbs{margin-bottom:28px;color:var(--muted)}
+.crumbs a{color:var(--muted)}
+.doc ol{margin:12px 0 0;padding-left:24px}
+.cards{list-style:none;margin:20px 0 0;padding:0;display:grid;gap:16px}
+.cards li{margin:0;padding:22px 24px 24px;background:var(--card);border:1px solid var(--line);border-radius:var(--r)}
+.cards h3{margin:0;font-size:22px;font-weight:400;letter-spacing:-.02em;line-height:1.2}
+.cards .mono{margin-top:10px;color:var(--muted)}
+.cards p:last-child{margin-top:8px}
+.pagecta{margin-top:56px;padding:34px 30px 36px;border-radius:var(--r);background:var(--scene);color:#eef3ef;display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+.pagecta .mono{color:var(--hud)}
+.pagecta h2{margin:0;font-size:clamp(30px,4vw,44px);letter-spacing:-.035em;line-height:1}
+.pagecta p{margin:0;color:rgba(238,243,239,.82);max-width:46ch}
+.pagecta a:not(.pill){color:#eef3ef}
+@media (max-width:760px){
+  .pagecta{padding:26px 20px 28px;margin-top:40px}
+}

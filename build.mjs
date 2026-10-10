@@ -34,16 +34,56 @@ const page = resolveIncludes(read(src("pages/index.html")));
 if (!layout.includes("<!--PAGE-->")) throw new Error("layouts/base.html has no <!--PAGE--> slot");
 fs.writeFileSync(path.join(dist, "index.html"), layout.replace("<!--PAGE-->", page));
 
-// Legal pages: plain reading layout, no scene scripts. Output is dist/<name>.html.
-const legalLayout = resolveIncludes(read(src("layouts/legal.html")));
-const legalPages = [
+// Inner pages (legal and services): plain reading layout, no scene scripts. Output is dist/<name>.html.
+// Titles and descriptions are checked against their length limits, and every JSON-LD block is built from
+// data (never typed by hand) so it is always valid JSON. The FAQ text and its FAQPage markup share one source.
+const SITE = "https://www.peak13.co.uk";
+const ORG = { "@id": `${SITE}/#organization` };
+const esc = (s) => s.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
+const ld = (obj) => `<script type="application/ld+json">\n${JSON.stringify(obj)}\n</script>`;
+const faq = JSON.parse(read(src("pages/faq.json")));
+const crumbs = (name, slug) => ({
+  "@context": "https://schema.org", "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: `${SITE}/` },
+    { "@type": "ListItem", position: 2, name: "Services", item: `${SITE}/services.html` },
+    { "@type": "ListItem", position: 3, name, item: `${SITE}/${slug}.html` },
+  ],
+});
+const service = (name, slug, serviceType, description, offer) => ({
+  "@context": "https://schema.org", "@type": "Service", name, serviceType, description,
+  url: `${SITE}/${slug}.html`, provider: ORG, areaServed: "GB",
+  offers: { "@type": "Offer", url: `${SITE}/${slug}.html`, priceCurrency: "GBP", ...offer },
+});
+const D_AUDIT = "A 5-day operational audit for UK lettings and property management firms. We trace where time and money go and rank it. £997 one-off.";
+const D_AUTO = "Workflow automations and AI agents for UK lettings and property management firms, built round your own process. From £3,000, quoted first.";
+const D_RET = "15 hours a month inside your lettings or property management business. £1,500 a month, 3-month minimum, first month includes the audit.";
+const D_HUB = "Three operational efficiency services for UK lettings and property management firms: a £997 audit, automations from £3,000, a £1,500 retainer.";
+const innerPages = [
   { name: "privacy", title: "Privacy notice | Peak13", desc: "How Peak13 Potential Ltd handles personal data collected through this website and when you contact us." },
   { name: "terms", title: "Website terms | Peak13", desc: "The terms for using the Peak13 Potential Ltd website." },
+  { name: "services", title: "Efficiency Services for UK Lettings Agents | Peak13", desc: D_HUB,
+    ld: [{ "@context": "https://schema.org", "@type": "FAQPage",
+      mainEntity: faq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) }] },
+  { name: "stoic-audit", title: "STOIC Operational Audit for UK Lettings Agents | Peak13", desc: D_AUDIT,
+    ld: [service("STOIC Operational Audit", "stoic-audit", "Operational efficiency audit", D_AUDIT, { price: "997" }), crumbs("STOIC Operational Audit", "stoic-audit")] },
+  { name: "agents-and-automations", title: "Workflow Automation for UK Lettings Agents | Peak13", desc: D_AUTO,
+    ld: [service("Agents & Automations", "agents-and-automations", "Workflow automation and AI agents", D_AUTO,
+        { priceSpecification: { "@type": "PriceSpecification", minPrice: 3000, priceCurrency: "GBP" } }), crumbs("Agents & Automations", "agents-and-automations")] },
+  { name: "embedded-retainer", title: "Embedded Operations Retainer for Lettings Agents | Peak13", desc: D_RET,
+    ld: [service("Embedded Operations Retainer", "embedded-retainer", "Embedded operations retainer", D_RET,
+        { priceSpecification: { "@type": "UnitPriceSpecification", price: 1500, priceCurrency: "GBP", unitCode: "MON", unitText: "month" } }), crumbs("Embedded Operations Retainer", "embedded-retainer")] },
 ];
-for (const p of legalPages) {
-  const body = resolveIncludes(read(src(`pages/${p.name}.html`)));
-  const canon = `https://www.peak13.co.uk/${p.name}.html`;
-  const html = legalLayout.replace("%TITLE%", p.title).replace("%DESC%", p.desc).replace("%CANON%", canon).replace("<!--PAGE-->", body);
+const faqHtml = `<div class="faq">\n${faq.map((f) => `<h3>${esc(f.q)}</h3>\n<p>${esc(f.a)}</p>`).join("\n")}\n</div>`;
+const innerLayout = resolveIncludes(read(src("layouts/legal.html")));
+for (const p of innerPages) {
+  if (p.title.length >= 60) throw new Error(`Title too long (${p.title.length}): ${p.title}`);
+  if (p.desc.length > 150) throw new Error(`Description too long (${p.desc.length}): ${p.name}`);
+  const body = resolveIncludes(read(src(`pages/${p.name}.html`))).replace("<!--FAQ-->", faqHtml);
+  const html = innerLayout
+    .replaceAll("%TITLE%", esc(p.title)).replaceAll("%DESC%", esc(p.desc)).replaceAll("%CANON%", `${SITE}/${p.name}.html`)
+    .replace("%LD%", (p.ld || []).map(ld).join("\n"))
+    .replace("<!--PAGE-->", () => body);
   fs.writeFileSync(path.join(dist, `${p.name}.html`), html);
 }
 
