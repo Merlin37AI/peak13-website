@@ -1,0 +1,41 @@
+/* visual additions: hero image, offer art, divider, who-it's-for band, floating booking button. Tokens only. */
+
+/* hero image with the guarantee and the booking button */
+.herofilm{grid-column:1 / -1;grid-row:3;position:relative;overflow:hidden;border-radius:var(--r);background:var(--scene);margin-top:18px;aspect-ratio:16 / 7.4}
+.herofilm img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 50%;display:block}
+.herofilm__copy{position:absolute;left:clamp(22px,4vw,56px);top:50%;transform:translateY(-50%);width:min(36%,400px);display:flex;flex-direction:column;align-items:flex-start;gap:18px;color:#eef3ef}
+.herofilm__copy .mono{color:var(--hud)}
+.herofilm__g{font-size:clamp(24px,2.7vw,40px);font-weight:300;letter-spacing:-.03em;line-height:1.08}
+.nw{white-space:nowrap}
+
+/* floating booking button: shown between the hero and the offers */
+.floatcta{position:fixed;right:20px;bottom:20px;z-index:30;opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .35s,transform .35s var(--ease),visibility .35s;box-shadow:0 8px 28px rgba(12,18,16,.28)}
+.floatcta.on{opacity:1;visibility:visible;transform:none}
+.floatcta.on:hover{transform:translateY(-2px)}
+
+@media (max-width:760px){
+  .herofilm{aspect-ratio:auto;display:flex;flex-direction:column;margin-top:6px}
+  .herofilm img{position:static;aspect-ratio:16 / 9;height:auto}
+  .herofilm__copy{position:static;transform:none;width:auto;padding:20px 20px 24px;gap:14px}
+  .herofilm__g{font-size:26px}
+  .floatcta{right:12px;bottom:12px;height:38px;padding:0 14px;font-size:11px}
+}
+@media (prefers-reduced-motion:reduce){
+  .floatcta{transition:none}
+}
+
+/* waste-to-saved divider, before the offers */
+.divider{margin:96px var(--gut) 0;border-radius:var(--r);overflow:hidden;background:var(--scene);aspect-ratio:24 / 8}
+.divider img{display:block;width:100%;height:100%;object-fit:cover}
+
+/* who it is for: office image beside a short statement */
+.band{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center;margin:96px var(--gut) 0}
+.band__img{display:block;width:100%;height:auto;aspect-ratio:16 / 11;object-fit:cover;border-radius:var(--r);background:var(--scene-2)}
+.band__copy{display:flex;flex-direction:column;gap:18px;max-width:46ch}
+.band__copy .mono{color:var(--muted)}
+.band__copy h2{font-size:clamp(34px,4.2vw,60px);letter-spacing:-.04em;line-height:.98}
+.band__copy p:last-child{font-size:clamp(17px,1.5vw,20px);line-height:1.4;color:#26302b}
+@media (max-width:760px){
+  .divider{margin-top:56px;aspect-ratio:16 / 8}
+  .band{grid-template-columns:minmax(0,1fr);margin-top:56px;gap:22px}
+}

@@ -16,3 +16,15 @@
 .offer p{color:#26302b}
 .offer .pill{align-self:flex-start;margin-top:auto}
 
+
+/* offer art, and the audit as the lead card */
+.offers{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr) minmax(0,1fr)}
+.offer__art{display:block;width:100%;height:auto;aspect-ratio:16 / 10;object-fit:cover;border-radius:calc(var(--r) - 8px);background:var(--scene)}
+.offer--lead{background:var(--scene);color:#eef3ef;border-color:rgba(226,238,232,.14)}
+.offer--lead p{color:rgba(238,243,239,.82)}
+.offer--lead .price small{color:var(--hud)}
+.offer--lead .specs,.offer--lead .specs li{border-color:rgba(226,238,232,.2)}
+.offer--lead .guarantee{background:var(--scene-2);border:1px solid rgba(31,209,138,.35)}
+@media (max-width:1100px){
+  .offers{grid-template-columns:minmax(0,1fr)}
+}

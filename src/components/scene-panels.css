@@ -4,9 +4,9 @@
 .panel .ph::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--sig);flex:none}
 .mgrid{position:relative;aspect-ratio:3 / 2;border:1px solid rgba(226,238,232,.2);border-radius:12px;overflow:hidden;background:linear-gradient(rgba(226,238,232,.16),rgba(226,238,232,.16)) 50% 0 / 1px 100% no-repeat,linear-gradient(rgba(226,238,232,.16),rgba(226,238,232,.16)) 0 50% / 100% 1px no-repeat}
 .mgrid::before{content:"";position:absolute;left:0;top:0;width:50%;height:50%;background:rgba(31,209,138,.08)}
-.mgrid .q{position:absolute;font-size:9.5px;opacity:.6}
+.mgrid .q{position:absolute;font-size:10px;opacity:.6}
 .q1{left:10px;top:8px}.q2{right:10px;top:8px}.q3{left:10px;bottom:8px}.q4{right:10px;bottom:8px}
-.mgrid .ax{position:absolute;font-size:9.5px;opacity:.5}
+.mgrid .ax{position:absolute;font-size:10px;opacity:.5}
 .ax.ay{left:10px;top:50%;margin-top:7px}
 .ax.axx{left:50%;bottom:8px;transform:translateX(-50%)}
 .b{position:absolute;width:26px;height:26px;margin:-13px 0 0 -13px;border-radius:50%;display:grid;place-items:center;font:400 11.5px/1 var(--mono);font-style:normal;opacity:0;transform:scale(0)}
@@ -30,7 +30,7 @@
 .bar .rcv{background:var(--sig)}
 .mn{display:flex;justify-content:space-between;gap:12px;margin-top:8px}
 .mn span{display:block}
-.mn b{display:block;font-weight:400;font-size:9.5px;opacity:.7}
+.mn b{display:block;font-weight:400;font-size:10px;opacity:.7}
 .mn em{font-style:normal;font-size:17px;letter-spacing:-.02em}
 .mn .bad em{color:#ff8a80}
 .mn .good{text-align:right}

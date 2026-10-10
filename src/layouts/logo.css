@@ -1,11 +1,11 @@
 /* logo: the supplied Peak13 mark and wordmark (transparent webp), used in the header and footer */
 .mark{display:block;line-height:0;font-size:0}
-.mark img{display:block;height:116px;width:auto;max-width:none}
-footer .mark img{height:92px}
+.mark img{display:block;height:92px;width:auto;max-width:none}
+footer .mark img{height:72px}
 @media (max-width:1000px){
   .top{flex-wrap:wrap}
 }
 @media (max-width:760px){
-  .mark img{height:80px}
-  footer .mark img{height:72px}
+  .mark img{height:64px}
+  footer .mark img{height:56px}
 }

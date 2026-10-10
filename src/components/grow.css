@@ -21,12 +21,12 @@
 .sheet__foot{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:16px;font-size:10px;color:var(--hud)}
 .sheet__foot b{font-weight:400;color:#eef3ef;margin-left:4px}
 .sheet__foot .dream{color:var(--sig)}
-.sheet .note{margin-top:12px;font-size:9.5px;opacity:.55}
+.sheet .note{margin-top:12px;font-size:10px;opacity:.78}
 .badge{position:absolute;left:20px;top:50px;display:flex;align-items:center;gap:10px;padding:5px 16px 5px 5px;border-radius:999px;background:rgba(12,18,16,.82);border:1px solid rgba(226,238,232,.18);color:#eef3ef;opacity:0;visibility:hidden;z-index:3;pointer-events:none}
 .bport{position:relative;width:34px;height:34px;border-radius:50%;overflow:hidden;flex:none;border:1px solid rgba(31,209,138,.6)}
 .btxt{display:flex;flex-direction:column;gap:2px}
 .btxt b{font-weight:400;font-size:14px;letter-spacing:-.01em;line-height:1}
-.btxt i{font-style:normal;font-size:9px;color:var(--hud)}
+.btxt i{font-style:normal;font-size:10px;color:var(--hud)}
 .odds{width:min(800px,62%)}
 .odds__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
 .od .tag{font-size:10.5px;color:var(--sig);margin-bottom:8px}
@@ -41,5 +41,5 @@
 .dots i.pin{transform:scale(1.5);box-shadow:0 0 0 2px rgba(31,209,138,.35)}
 .od .cap{font-size:13.5px;line-height:1.4;color:rgba(238,243,239,.8)}
 .od .cap .s{display:none}
-.odds .src{margin-top:18px;padding-top:12px;border-top:1px solid rgba(226,238,232,.14);font-size:8.5px;line-height:1.5;color:rgba(226,238,232,.55)}
+.odds .src{margin-top:18px;padding-top:12px;border-top:1px solid rgba(226,238,232,.14);font-size:10px;line-height:1.5;color:rgba(226,238,232,.74)}
 

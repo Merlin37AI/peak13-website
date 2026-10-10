@@ -16,6 +16,7 @@
     "layouts/footer.css",
     "layouts/legal.css",
     "layouts/logo.css",
+    "layouts/visuals.css",
     "components/rail.css",
     "layouts/responsive.css"
   ],
@@ -31,6 +32,7 @@
     "components/build-flow.js",
     "components/calculator.js",
     "components/tower.js",
+    "components/float-cta.js",
     "components/boot.js"
   ]
 }
