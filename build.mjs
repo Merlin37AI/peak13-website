@@ -70,7 +70,7 @@ const innerPages = [
   { name: "agents-and-automations", title: "Workflow Automation for UK Lettings Agents | Peak13", desc: D_AUTO,
     ld: [service("Agents & Automations", "agents-and-automations", "Workflow automation and AI agents", D_AUTO,
         { priceSpecification: { "@type": "PriceSpecification", minPrice: 3000, priceCurrency: "GBP" } }), crumbs("Agents & Automations", "agents-and-automations")] },
-  { name: "embedded-retainer", title: "Embedded Operations Retainer for Lettings Agents | Peak13", desc: D_RET,
+  { name: "embedded-retainer", title: "Embedded Retainer for UK Lettings Agents | Peak13", desc: D_RET,
     ld: [service("Embedded Operations Retainer", "embedded-retainer", "Embedded operations retainer", D_RET,
         { priceSpecification: { "@type": "UnitPriceSpecification", price: 1500, priceCurrency: "GBP", unitCode: "MON", unitText: "month" } }), crumbs("Embedded Operations Retainer", "embedded-retainer")] },
 ];
