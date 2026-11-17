@@ -25,6 +25,7 @@
     "components/method-timeline.js",
     "components/projector.js",
     "components/method-scene.js",
+    "components/week-scene.js",
     "components/method-hud.js",
     "components/scroll-mapping.js",
     "components/grow-scene.js",

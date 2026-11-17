@@ -1,5 +1,5 @@
   /* ---------- HUD + panels ---------- */
-  var CLIPS = ["Step 1: The whole building", "Step 2: The track", "Step 3: The vital few", "Step 4: The matrix", "Step 5: Loss and recovery"];
+  var CLIPS = [(WEEK ? "Step 1: The whole week" : "Step 1: The whole building"), (WEEK ? "Step 2: Hour by hour" : "Step 2: The track"), "Step 3: The vital few", "Step 4: The matrix", "Step 5: Loss and recovery"];
   var STEPS = ["Survey", "Trace", "Order", "Interrogate", "Cost"];
   var hudClip = $("#hudClip"), hudOrbit = $("#hudOrbit"), hudStep = $("#hudStep"), idx = document.querySelectorAll("#hudIdx b");
   var mx = $("#mx"), cs = $("#cs"), mxB = mx.querySelectorAll(".b"), mxL = mx.querySelectorAll(".top3 li");
@@ -22,7 +22,7 @@
       for (i = 0; i < idx.length; i++) idx[i].className = i === st ? "on" : i < st ? "done" : "";
     }
     var deg = Math.round(((-s.yaw % 360) + 360) % 360);
-    var o = (MOB ? "" : "Orbit ") + ("00" + deg).slice(-3) + "° • Floors 0" + F;
+    var o = WEEK ? "Mon to Fri \u2022 120 hrs" : (MOB ? "" : "Orbit ") + ("00" + deg).slice(-3) + "° • Floors 0" + F;
     if (o !== lastOrbit) { lastOrbit = o; hudOrbit.textContent = o; }
 
     /* Interrogate: impact against effort, then the top three */

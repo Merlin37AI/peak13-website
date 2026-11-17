@@ -12,6 +12,7 @@
 
   function render(u, time) {
     var s = state(u), i, k;
+    if (WEEK) { renderWeek(u, time, s); return s; }
     var sway = RM ? 0 : Math.sin(time * 0.00032) * 2.4;
     var w = cv.width, h = cv.height;
     var f = MOB ? w * 1.45 : Math.min(h * 1.62, w * 0.95);
