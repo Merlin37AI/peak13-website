@@ -36,6 +36,8 @@
 .mn .good{text-align:right}
 .mn .good em{color:var(--sig)}
 .panel .foot{margin-top:18px;font-size:10px;opacity:.6}
+/* the one real figure on the page: an anonymised audit, kept apart from the illustration above it */
+.panel .foot.real{margin-top:10px;padding-top:10px;border-top:1px solid var(--line-hud, rgba(226,238,232,.16));opacity:.9}
 
 #gr{position:absolute;inset:0;width:100%;height:100%;display:block}
 
