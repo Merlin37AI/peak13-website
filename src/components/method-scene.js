@@ -18,8 +18,16 @@
     var ox = MOB ? w * 0.34 : w * 0.62, oy = MOB ? h * 0.34 : h * lerp(0.34, 0.5, ss(-0.4, 0, u));
     var cam = new Camera(s.yaw + sway, s.pitch, s.dist, f, ox, oy, s.ty);
     var lw = Math.max(1, DPR * 0.9);
-    var D = 1 - 0.72 * s.dim;
+    var D = 1 - 0.72 * s.dim * (1 - 0.6 * s.rec);   /* the building comes back up as the money is recovered */
     var rt = route(s), dHead = s.trace * rt.len;
+    /* which floors the job has reached, and the colour a flagged floor shows: red for waste, green once fixed, grey if set aside */
+    var fv = [], fcol = [], fk = [];
+    for (i = 0; i < rt.stops.length; i++) if (rt.stops[i].k === 1) {
+      var fi0 = rt.stops[i].i, fl0 = FLOORS[fi0];
+      fk[fi0] = rt.stops[i].idx;
+      fv[fi0] = s.trace > 0.001 && rt.cum[fk[fi0]] <= dHead;
+      fcol[fi0] = !fl0.f ? null : fl0.rank === 0 ? mixRGB(RED, [180, 190, 186], s.ghost) : mixRGB(RED, EM, s.rec);
+    }
     ctx.clearRect(0, 0, w, h);
 
     /* ground: soft pool of light + plus marks on the ground grid */
@@ -55,9 +63,12 @@
       var b = boxes[i], keep = b.v < 0 || FLOORS[b.v].rank > 0, fade = keep ? 1 : 1 - s.ghost;
       var st = keep && b.v >= 0 && s.ghost > 0
         ? { grad: gVital, fa: lerp(0.02, 0.034, s.ghost) * D, sc: mixRGB(EDGE, EM2, s.ghost), sa: lerp(0.17, 0.4, s.ghost) * D }
-        : { grad: gGlass, fa: (b.v < 0 ? 0.05 : 0.02) * fade * D, sc: EDGE.join(","), sa: (b.v < 0 ? 0.3 : 0.17) * fade * D };
+        : { grad: gGlass, fa: (b.v < 0 ? 0.06 : 0.04) * fade * D, sc: EDGE.join(","), sa: (b.v < 0 ? 0.3 : 0.22) * fade * D };
       if (fade > 0.01 || keep) drawBox(ctx, cam, b, st, lw);
-      if (b.v >= 0 && fade > 0.01) windows(ctx, cam, b, fade * D, b.v);
+      /* a flagged floor glows its colour once the job has been through it */
+      var hot = b.v >= 0 && fv[b.v] && fcol[b.v];
+      if (hot && fade > 0.01) drawBox(ctx, cam, b, { fc: fcol[b.v], fa: 0.045 * fade * D, sc: fcol[b.v], sa: 0.3 * fade * D }, lw);
+      if (b.v >= 0 && fade > 0.01) windows(ctx, cam, b, fade * D * (hot ? 2.4 : 1.5), b.v, hot ? fcol[b.v] : null, RM ? 0 : time);
       if (!keep && s.ghost > 0.01) outlined.push(b);
     }
     /* what we leave alone stays on the drawing as a dashed outline */
@@ -65,6 +76,33 @@
       ctx.setLineDash([4 * DPR, 5 * DPR]);
       for (i = 0; i < outlined.length; i++) drawBox(ctx, cam, outlined[i], { fa: 0, sc: EDGE.join(","), sa: 0.5 * s.ghost * D }, lw);
       ctx.setLineDash([]);
+    }
+
+    /* life on the floors: two people per floor. Work flows one way in green; waste bounces back and forth in red and piles up */
+    var pa = s.open * D;
+    if (pa > 0.01) for (i = 0; i < F; i++) {
+      var flp = FLOORS[i], fa2 = pa * (flp.rank > 0 || !flp.f ? 1 : 1 - s.ghost);
+      if (fa2 < 0.02) continue;
+      var e0 = stopPos(i, 0, s), e1 = stopPos(i, 2, s), ends = [e0, e1];
+      for (k = 0; k < 2; k++) {
+        var pc2 = cam.cam(ends[k][0], ends[k][1] + 0.13, ends[k][2]), q2 = cam.scr(pc2), sz = f * 0.2 / pc2[2];
+        ctx.save(); ctx.translate(q2[0] - sz / 2, q2[1] - sz / 2); ctx.scale(sz / 24, sz / 24);
+        ctx.lineWidth = 1.9; ctx.lineCap = "round"; ctx.lineJoin = "round"; ctx.strokeStyle = "rgba(236,244,240," + (0.8 * fa2).toFixed(3) + ")"; ctx.stroke(GICP.person); ctx.restore();
+      }
+      if (!fv[i]) continue;
+      var bad = flp.f && !(flp.rank > 0 && s.rec > 0.5), dc = flp.f ? fcol[i] : EM_S;
+      if (!RM) {
+        var ph2 = (time * (bad ? 0.0011 : 0.0006) + i * 0.37) % 1, tt2 = bad ? 1 - Math.abs(2 * ph2 - 1) : ph2;
+        var dp = cam.pt(lerp(e0[0], e1[0], tt2), e0[1] + 0.05, lerp(e0[2], e1[2], tt2));
+        ctx.fillStyle = "rgba(" + dc + "," + (0.95 * fa2).toFixed(3) + ")"; ctx.beginPath(); ctx.arc(dp[0], dp[1], 2.6 * DPR, 0, Math.PI * 2); ctx.fill();
+      }
+      if (flp.f) {
+        var P1 = rt.pts[fk[i]], np = Math.round(5 * clamp((dHead - rt.cum[fk[i]]) / 0.8, 0, 1) * (flp.rank > 0 ? 1 - s.rec : 1));
+        for (k = 0; k < np; k++) {
+          var pp = cam.cam(P1[0], P1[1] + 0.075 + k * 0.03, P1[2]), qq = cam.scr(pp), pw2 = f * 0.1 / pp[2], phh = f * 0.02 / pp[2];
+          ctx.fillStyle = "rgba(" + dc + "," + (0.85 * fa2).toFixed(3) + ")"; ctx.fillRect(qq[0] - pw2 / 2 + (k % 2 ? 1 : -1) * pw2 * 0.08, qq[1] - phh / 2, pw2, phh);
+        }
+      }
     }
 
     /* Trace: one job's track through every department */
@@ -167,6 +205,23 @@
         ctx.fillStyle = "rgba(" + tc + "," + al.toFixed(3) + ")"; ctx.font = "400 " + Math.round(12 * DPR) + "px 'Host Grotesk', sans-serif";
         ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.fillText("£", px, py + 0.5 * DPR); ctx.textAlign = "left";
       }
+    }
+    /* Cost: an example figure beside each flagged floor, red while it is being lost, green once it is recovered */
+    var cz = cost(u);
+    if (cz.idf > 0.01) {
+      ctx.font = mono(MOB ? 9.5 : 12.5); ctx.textBaseline = "middle"; ctx.textAlign = MOB ? "left" : "right";
+      var topY = 1e9, sideX = MOB ? -1e9 : 1e9;
+      for (i = 0; i < F; i++) [[BW, BD], [BW, -BD], [-BW, BD], [-BW, -BD]].forEach(function (c) { var p = cam.pt(c[0], floorY(i, s), c[1]); sideX = MOB ? Math.max(sideX, p[0]) : Math.min(sideX, p[0]); });
+      sideX += (MOB ? 12 : -14) * DPR;
+      for (i = 0; i < F; i++) {
+        var fz2 = FLOORS[i]; if (!fz2.f) continue;
+        var won = fz2.rank > 0 && cz.rcv > 0.5, yy2 = cam.pt(0, floorY(i, s), 0)[1];
+        ctx.fillStyle = "rgba(" + (won ? EM_S : fz2.rank > 0 ? RED_S : "180,190,186") + "," + cz.idf.toFixed(3) + ")";
+        ctx.fillText((won ? "+" : "-") + money(fz2.v * (won ? cz.rcv : cz.idf)), sideX, yy2);
+        topY = Math.min(topY, yy2);
+      }
+      ctx.fillStyle = "rgba(226,238,232," + (0.6 * cz.idf).toFixed(3) + ")"; ctx.font = mono(MOB ? 8 : 9);
+      ctx.fillText("EXAMPLE, A YEAR", sideX, topY - 18 * DPR); ctx.textAlign = "left";
     }
     return s;
   }

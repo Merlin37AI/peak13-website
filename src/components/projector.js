@@ -88,7 +88,7 @@
     ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.lineTo(c[0], c[1]); ctx.lineTo(d[0], d[1]); ctx.closePath(); ctx.fill();
   }
   /* window strips on whichever walls face the camera */
-  function windows(ctx, cam, b, alpha, idx, rgb) {
+  function windows(ctx, cam, b, alpha, idx, rgb, t) {
     var faces = [[0, 1], [0, -1], [1, 0], [-1, 0]], fi, k;
     for (fi = 0; fi < 4; fi++) {
       var nx = faces[fi][0], nz = faces[fi][1], px = b.x + nx * b.hx, pz = b.z + nz * b.hz;
@@ -99,7 +99,7 @@
         var c0 = -span + 0.08 + k * ww + ww * 0.14, c1 = c0 + ww * 0.72, A, B, C, D;
         if (alongX) { A = cam.pt(b.x + c0, y0, pz); B = cam.pt(b.x + c1, y0, pz); C = cam.pt(b.x + c1, y1, pz); D = cam.pt(b.x + c0, y1, pz); }
         else { A = cam.pt(px, y0, b.z + c0); B = cam.pt(px, y0, b.z + c1); C = cam.pt(px, y1, b.z + c1); D = cam.pt(px, y1, b.z + c0); }
-        var r = 0.5 + 0.5 * Math.sin(idx * 12.9 + k * 7.3 + fi * 3.1);
+        var r = 0.5 + 0.5 * Math.sin(idx * 12.9 + k * 7.3 + fi * 3.1 + (t || 0) * 0.0007 * (1 + (k + idx) % 3));
         ctx.fillStyle = "rgba(" + (rgb || "214,236,226") + "," + (alpha * (0.06 + 0.12 * r * r)).toFixed(3) + ")";
         fillQuad(ctx, A, B, C, D);
       }

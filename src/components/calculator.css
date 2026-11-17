@@ -13,3 +13,6 @@
 
 
 .calc input{border-color:rgba(17,21,19,.45)}
+/* faint b&w photo behind the heading; AI-generated scene, decorative only, never captioned as a client or team */
+#calc{position:relative;isolation:isolate}
+#calc::before{content:"";position:absolute;inset:0;z-index:-1;background:url(/images/bg-calc-week.webp) right center/cover no-repeat;filter:grayscale(1);opacity:.1;pointer-events:none}

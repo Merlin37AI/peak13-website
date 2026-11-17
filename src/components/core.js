@@ -4,13 +4,13 @@
   var F = 7, BW = 0.85, BD = 0.6, FHY = 0.17;
   var EM_S = "31,209,138", RED_S = "255,106,95";
   var FLOORS = [
-    { n: "Reception & enquiries", s: "Enquiries", f: "Re-keyed by hand", fs: "Re-keyed", rank: 3 },
-    { n: "Lettings", s: "Lettings", f: "Viewings by phone tag", fs: "Phone tag", rank: 0 },
+    { n: "Reception & enquiries", s: "Enquiries", f: "Re-keyed by hand", fs: "Re-keyed", rank: 3, v: 10400 },
+    { n: "Lettings", s: "Lettings", f: "Viewings by phone tag", fs: "Phone tag", rank: 0, v: 5200 },
     { n: "Property management", s: "Managing" },
-    { n: "Maintenance", s: "Repairs", f: "Waiting on approval", fs: "Waiting", rank: 1 },
-    { n: "Accounts & rent", s: "Rent", f: "Arrears chased by hand", fs: "Chasing", rank: 2 },
+    { n: "Maintenance", s: "Repairs", f: "Waiting on approval", fs: "Waiting", rank: 1, v: 18200 },
+    { n: "Accounts & rent", s: "Rent", f: "Arrears chased by hand", fs: "Chasing", rank: 2, v: 13000 },
     { n: "Compliance", s: "Compliance" },
-    { n: "Landlord reporting", s: "Reports", f: "Rebuilt every month", fs: "Rebuilt", rank: 0 }
+    { n: "Landlord reporting", s: "Reports", f: "Rebuilt every month", fs: "Rebuilt", rank: 0, v: 5200 }
   ];
   var SX = [-0.5, 0.02, 0.48], SZ = [0.2, -0.15, 0.18], CORE = [0.66, -0.38];
   function $(s) { return document.querySelector(s); }

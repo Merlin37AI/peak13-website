@@ -95,13 +95,11 @@
   .cta{grid-template-columns:minmax(0,1fr);min-height:0}
   .cta .copy{padding:32px 22px 10px}
   .cube-stage{min-height:300px;padding-bottom:44px}
-  .cube{scale:.85}
   .foot{grid-template-columns:minmax(0,1fr)}
   .rail{display:none}
 }
 @media (prefers-reduced-motion:reduce){
   .js .reveal .mask > span{transform:none;transition:none}
-  .cube{animation:none}
   .pill{transition:none}
   .js .rise{opacity:1;transform:none;transition:none}
   .js .step::before{transform:none;transition:none}
