@@ -1,14 +1,14 @@
   /* ---------- tiny projector ---------- */
-  function Camera(yaw, pitch, dist, f, ox, oy) {
+  function Camera(yaw, pitch, dist, f, ox, oy, ty) {
     this.cy = Math.cos(yaw * D2R); this.sy = Math.sin(yaw * D2R);
     this.cp = Math.cos(pitch * D2R); this.sp = Math.sin(pitch * D2R);
-    this.d = dist; this.f = f; this.ox = ox; this.oy = oy;
+    this.d = dist; this.f = f; this.ox = ox; this.oy = oy; this.ty = ty || 0;   /* ty: height the camera looks at */
   }
   Camera.prototype.rot = function (x, y, z) {
     var x1 = x * this.cy + z * this.sy, z1 = -x * this.sy + z * this.cy;
     return [x1, y * this.cp + z1 * this.sp, -y * this.sp + z1 * this.cp];
   };
-  Camera.prototype.cam = function (x, y, z) { var r = this.rot(x, y, z); r[2] += this.d; return r; };
+  Camera.prototype.cam = function (x, y, z) { var r = this.rot(x, y - this.ty, z); r[2] += this.d; return r; };
   Camera.prototype.scr = function (p) { return [this.ox + this.f * p[0] / p[2], this.oy - this.f * p[1] / p[2]]; };
   Camera.prototype.pt = function (x, y, z) { return this.scr(this.cam(x, y, z)); };
 

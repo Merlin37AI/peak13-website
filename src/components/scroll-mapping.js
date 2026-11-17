@@ -4,6 +4,7 @@
   var li0Doc = 0, LIH = window.innerHeight, ANCHOR = 0.5;
   function measure() {
     sizeCanvas();
+    document.documentElement.style.setProperty("--top-h", $(".top").offsetHeight + "px");   /* hero photo runs up behind the header */
     var r = lis[0].getBoundingClientRect();
     li0Doc = r.top + window.scrollY;
     LIH = r.height || window.innerHeight;

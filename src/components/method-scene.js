@@ -16,7 +16,7 @@
     var w = cv.width, h = cv.height;
     var f = MOB ? w * 1.45 : Math.min(h * 1.62, w * 0.95);
     var ox = MOB ? w * 0.34 : w * 0.62, oy = MOB ? h * 0.34 : h * lerp(0.34, 0.5, ss(-0.4, 0, u));
-    var cam = new Camera(s.yaw + sway, s.pitch, s.dist, f, ox, oy);
+    var cam = new Camera(s.yaw + sway, s.pitch, s.dist, f, ox, oy, s.ty);
     var lw = Math.max(1, DPR * 0.9);
     var D = 1 - 0.72 * s.dim;
     var rt = route(s), dHead = s.trace * rt.len;
