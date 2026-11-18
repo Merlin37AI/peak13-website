@@ -36,5 +36,5 @@
   new IntersectionObserver(function (es) { inView = es[0].isIntersecting; dirty = true; }, { rootMargin: "100px" }).observe($("#stage"));
   window.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("resize", function () { measure(); onScroll(); dirty = true; if (typeof measureG === "function") { measureG(); dirtyG = true; } });
-  window.addEventListener("load", function () { measure(); onScroll(); dirty = true; measureG(); dirtyG = true; });
+  window.addEventListener("load", function () { measure(); onScroll(); dirty = true; });
 

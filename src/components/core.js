@@ -1,6 +1,6 @@
   var RM = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var D2R = Math.PI / 180;
-  var WEEK = true;   /* true: the method scene draws one working week (week-scene.js). false: the seven-floor building */
+  var WEEK = true;   /* true: the method scene draws one working week (week-scene.js). false: the seven-floor building, which also needs grow-scene.js back in the manifest for its staff icon */
   /* The building: one floor per department. Scroll walks it through the five STOIC steps. */
   var F = 7, BW = 0.85, BD = 0.6, FHY = 0.17;
   var EM_S = "31,209,138", RED_S = "255,106,95";

@@ -3,6 +3,5 @@
   }
 
   measure(); onScroll(); requestAnimationFrame(frame);
-  measureG(); requestAnimationFrame(frameG);
 
   startPage();
