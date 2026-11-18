@@ -4,3 +4,23 @@
 .big{font-size:clamp(42px,6.2vw,96px);letter-spacing:-.045em;line-height:.94}
 .lede{font-size:clamp(18px,1.6vw,22px);line-height:1.38;letter-spacing:-.01em;max-width:36ch}
 
+/* icon pack: one sprite used as a mask, so every icon takes the text colour around it */
+.ic{display:inline-block;width:1.15em;height:1.15em;margin-right:.34em;vertical-align:-.2em;background:currentColor;-webkit-mask:url(/images/icons.webp) 0 0/400% 400% no-repeat;mask:url(/images/icons.webp) 0 0/400% 400% no-repeat}
+.ic--top{display:block;width:44px;height:44px;margin:0 0 14px}
+.step .ic--top{width:36px;height:36px;margin-bottom:10px}
+.ic-audit{-webkit-mask-position:0 0;mask-position:0 0}
+.ic-agents{-webkit-mask-position:33.333% 0;mask-position:33.333% 0}
+.ic-retainer{-webkit-mask-position:66.667% 0;mask-position:66.667% 0}
+.ic-survey{-webkit-mask-position:100% 0;mask-position:100% 0}
+.ic-trace{-webkit-mask-position:0 33.333%;mask-position:0 33.333%}
+.ic-order{-webkit-mask-position:33.333% 33.333%;mask-position:33.333% 33.333%}
+.ic-interrogate{-webkit-mask-position:66.667% 33.333%;mask-position:66.667% 33.333%}
+.ic-cost{-webkit-mask-position:100% 33.333%;mask-position:100% 33.333%}
+.ic-mail{-webkit-mask-position:0 66.667%;mask-position:0 66.667%}
+.ic-read{-webkit-mask-position:33.333% 66.667%;mask-position:33.333% 66.667%}
+.ic-rules{-webkit-mask-position:66.667% 66.667%;mask-position:66.667% 66.667%}
+.ic-job{-webkit-mask-position:100% 66.667%;mask-position:100% 66.667%}
+.ic-person{-webkit-mask-position:0 100%;mask-position:0 100%}
+.ic-repairs{-webkit-mask-position:33.333% 100%;mask-position:33.333% 100%}
+.ic-enquiries{-webkit-mask-position:66.667% 100%;mask-position:66.667% 100%}
+.ic-arrears{-webkit-mask-position:100% 100%;mask-position:100% 100%}
