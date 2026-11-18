@@ -18,7 +18,6 @@ The legal pages hold body text only. Their title and description are set in the 
 |---|---|
 | Nav "What we build" | `#build` |
 | Nav "The audit" | `#audit` (the three offers) |
-| Grow step 6 link | `#stage` (the STOIC method) |
 | Method step 5 link | `#calc` (the calculator) |
 | Every "Book a free Snapshot Call" | Calendly: calendly.com/peak13consultingcall/ai-discovery |
 | Footer and CTA email | info@peak13.co.uk |
